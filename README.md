@@ -1,5 +1,5 @@
 # PrivateNotesBackend
-Back-end implementation designed for a private cloud-based note-taking application. Utilizes the cryptography library in Python to ensure security and privacy. 
+Back-end implementation designed for a private cloud-based note-taking application. Utilizes the cryptography library in Python to ensure security and privacy. Adversaries will not be able to learn anything about notes in the database that it does not specifically access (more about this in the threat model below).
 
 Built to withstand a specific cryptographic threat model in which the adversary may submit four queries any number of times:
   -Insert: Adversary specifies a <title, note0, note1>. The challenger adds <title, noteB> to the database, where noteB is randomly chosen from note0 or note1.
@@ -9,3 +9,4 @@ Built to withstand a specific cryptographic threat model in which the adversary 
 
 This backend is also built to withstand two specific attacks:
   -Swap Attack: The adversary switches the values corresponding to different keys (titles). Then, when the application user attempts to access one note, they share sensitive information about the other one instead.
+  -Rollback Attack: The adversary can replace a note with a previous version of the same note. 
